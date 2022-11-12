@@ -8,19 +8,22 @@ lowerCase = [i for i in range(97, 122)]     #representasi huruf kapital pada ASC
 password = input("") 
 passASCII = list(password.encode('ascii'))  #encode ke ASCII dalam bentuk list
 
-if(passASCII[0]>=48 and passASCII[0]<=57):  #Jika password diawali angka
-    print("Karakter awal tidak boleh angka")
-else:
-    checkNumber = np.isin(passASCII, number)                    #melakukan pengecekan angka pada password
-    if(np.any(checkNumber)):                                    #jika password memiliki angka
-        checkUpperCase = np.isin(passASCII, upperCase)          #melakukan pengecekan huruf kapital pada password
-        if(np.any(checkUpperCase)):                             #jika password memiliki huruf kapital
-            checkLowerCase = np.isin(passASCII, lowerCase)      #melakukan pengecekan huruf kecil pada password
-            if(np.any(checkLowerCase)):                         #jika password memiliki huruf kecil
-                print("Kata sandi valid")
-            else:                                               #Jika tidak memiliki huruf kecil
+if(len(password )>= 8 and len(password) <= 32):
+    if(passASCII[0]>=48 and passASCII[0]<=57):  #Jika password diawali angka
+        print("Karakter awal tidak boleh angka")
+    else:
+        checkNumber = np.isin(passASCII, number)                    #melakukan pengecekan angka pada password
+        if(np.any(checkNumber)):                                    #jika password memiliki angka
+            checkUpperCase = np.isin(passASCII, upperCase)          #melakukan pengecekan huruf kapital pada password
+            if(np.any(checkUpperCase)):                             #jika password memiliki huruf kapital
+                checkLowerCase = np.isin(passASCII, lowerCase)      #melakukan pengecekan huruf kecil pada password
+                if(np.any(checkLowerCase)):                         #jika password memiliki huruf kecil
+                    print("Kata sandi valid")
+                else:                                               #Jika tidak memiliki huruf kecil
+                    print("Harus memiliki huruf kapital dan huruf kecil")
+            else:                                                   #jika tidak memiliki huruf besar
                 print("Harus memiliki huruf kapital dan huruf kecil")
-        else:                                                   #jika tidak memiliki huruf besar
-            print("Harus memiliki huruf kapital dan huruf kecil")
-    else:                                                       #jika tidak memiliki angka
-        print("Harus memiliki angka")
+        else:                                                       #jika tidak memiliki angka
+            print("Harus memiliki angka")
+else:
+    print("Panjang password tidak sesuai (Note : Minimal = 8 karakter dan Maksimal = 32 karakter)")
