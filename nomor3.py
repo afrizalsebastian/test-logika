@@ -13,17 +13,17 @@ if(len(password )>= 8 and len(password) <= 32):
         print("Karakter awal tidak boleh angka")
     else:
         checkNumber = np.isin(passASCII, number)                    #melakukan pengecekan angka pada password
-        if(np.any(checkNumber)):                                    #jika password memiliki angka
-            checkUpperCase = np.isin(passASCII, upperCase)          #melakukan pengecekan huruf kapital pada password
-            if(np.any(checkUpperCase)):                             #jika password memiliki huruf kapital
-                checkLowerCase = np.isin(passASCII, lowerCase)      #melakukan pengecekan huruf kecil pada password
-                if(np.any(checkLowerCase)):                         #jika password memiliki huruf kecil
-                    print("Kata sandi valid")
-                else:                                               #Jika tidak memiliki huruf kecil
-                    print("Harus memiliki huruf kapital dan huruf kecil")
-            else:                                                   #jika tidak memiliki huruf besar
+        checkUpperCase = np.isin(passASCII, upperCase)              #melakukan pengecekan huruf kapital pada password
+        checkLowerCase = np.isin(passASCII, lowerCase)              #melakukan pengecekan huruf kecil pada password
+        if(np.any(checkNumber) and np.any(checkUpperCase) and np.any(checkLowerCase)): #jika password Valid
+            print("Kata sandi valid")
+        else:
+            if(not(np.any(checkNumber) and (not(np.any(checkLowerCase)) or not(np.any(checkUpperCase))))):
                 print("Harus memiliki huruf kapital dan huruf kecil")
-        else:                                                       #jika tidak memiliki angka
-            print("Harus memiliki angka")
+                print("Harus memiliki angka")
+            elif(not(np.any(checkNumber))):
+                print("Harus memiliki angka")
+            else:
+                print("Harus memiliki huruf kapital dan huruf kecil")
 else:
     print("Panjang password tidak sesuai (Note : Minimal = 8 karakter dan Maksimal = 32 karakter)")
