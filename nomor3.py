@@ -5,7 +5,7 @@ upperCase = [i for i in range(65, 91)]      #representasi huruf kecil pada ASCII
 lowerCase = [i for i in range(97, 122)]     #representasi huruf kapital pada ASCII decimal
 
 #input user
-password = input("") 
+password = input("Password = ") 
 passASCII = list(password.encode('ascii'))  #encode ke ASCII dalam bentuk list
 
 if(len(password )>= 8 and len(password) <= 32):

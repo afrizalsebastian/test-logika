@@ -18,7 +18,6 @@ for inputUser in arrayInput :                   #Mengambil setiap angka pada inp
         temp = ""
         arrInt.append(intTemp)
 
-
 # Check
 npArr = np.sort(arrInt)                         #sort array
 currentValue = npArr[0]                         #Sequential number (nilai yang seharusnya)
@@ -28,5 +27,4 @@ for elmt in npArr :
         currentValue += 1
     else :                                      #Jika tidak ditemukan angka yang seharusnya (terkecil)
         break
-
 print(currentValue)
